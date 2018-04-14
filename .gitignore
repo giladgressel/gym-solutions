@@ -1,2 +1,7 @@
 /venv
 *.pyc
+ipynb/.DS_Store
+frozen_lake/.DS_Store
+A4.code-workspace
+.DS_Store
+ipynb/.ipynb_checkpoints/*

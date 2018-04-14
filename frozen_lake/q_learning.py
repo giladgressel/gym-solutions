@@ -58,9 +58,4 @@ plt.xlabel('Episode')
 plt.ylabel('Average Reward')
 plt.show()
 
-# Push solution
-api_key = os.environ.get('GYM_API_KEY', False)
-if api_key:
-    print('Push solution? (y/n)')
-    if input().lower() == 'y':
-        gym.upload(folder, api_key=api_key)
+

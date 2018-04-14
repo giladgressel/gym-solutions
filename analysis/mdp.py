@@ -19,7 +19,7 @@ def evaluate_rewards_and_transitions(problem, mutate=False):
     num_states = problem.observation_space.n
     num_actions = problem.action_space.n
 
-    # Intiailize T and R matrices
+    # Initialize Transition and Reward matrices
     R = np.zeros((num_states, num_actions, num_states))
     T = np.zeros((num_states, num_actions, num_states))
 
@@ -104,6 +104,9 @@ def print_policy(policy, mapping=None, shape=(0,)):
     print(np.array([mapping[action] for action in policy]).reshape(shape))
 
 def run_discrete(environment_name, mapping, shape=None):
+    print('-----------------------------------')
+    print('-----------------------------------')    
+    print('-----------------------------------')    
     problem = gym.make(environment_name)
     print('== {} =='.format(environment_name))
     print('Actions:', problem.env.action_space.n)
@@ -116,20 +119,27 @@ def run_discrete(environment_name, mapping, shape=None):
     print('Iterations:', iters)
     print()
 
+    if shape is not None:
+        print('== Value Iterated Policy ==')
+        print_policy(value_policy, mapping, shape)
+        print()
+
+
     print('== Policy Iteration ==')
     policy, iters = policy_iteration(problem)
     print('Iterations:', iters)
     print()
 
-    diff = sum([abs(x-y) for x, y in zip(policy.flatten(), value_policy.flatten())])
-    if diff > 0:
-        print('Discrepancy:', diff)
-        print()
-
     if shape is not None:
-        print('== Policy ==')
+        print('== Policy Iterated Policy ==')
         print_policy(policy, mapping, shape)
         print()
+
+    diff = sum([abs(x-y) for x, y in zip(policy.flatten(), value_policy.flatten())])
+    print('Discrepancy:', diff)
+    print()
+
+    
 
     return policy
 
