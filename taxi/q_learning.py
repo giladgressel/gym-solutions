@@ -14,8 +14,8 @@ rewards = []
 iterations = []
 
 # Parameters
-alpha = 0.85
-discount = 0.99
+alpha = 0.75
+discount = 0.95
 episodes = 1000
 
 # Episodes
